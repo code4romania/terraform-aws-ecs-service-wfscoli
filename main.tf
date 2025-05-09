@@ -111,10 +111,6 @@ module "ecs_app" {
       valueFrom = aws_secretsmanager_secret.app_key.arn
     },
     {
-      name      = "DB_CONNECTION"
-      valueFrom = "${var.common.rds_secrets_arn}:engine::"
-    },
-    {
       name      = "DB_HOST"
       valueFrom = "${var.common.rds_secrets_arn}:host::"
     },
