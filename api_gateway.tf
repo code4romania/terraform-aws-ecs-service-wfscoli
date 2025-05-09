@@ -15,7 +15,7 @@ resource "aws_apigatewayv2_integration" "main" {
   integration_method     = "ANY"
   connection_type        = "VPC_LINK"
   connection_id          = aws_apigatewayv2_vpc_link.main.id
-  integration_uri        = var.common.service_discovery.arn
+  integration_uri        = module.ecs_app.service_discovery_arn
   payload_format_version = "1.0"
   description            = "${var.name} CloudMap Integration"
 }
