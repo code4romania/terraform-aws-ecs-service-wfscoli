@@ -31,12 +31,17 @@ variable "common" {
       cloudfront_url = string
     })
 
+    service_discovery = object({
+      namespace_id = string
+      arn          = string
+    })
+
     ecs_cluster = object({
-      cluster_name                   = string
-      log_group_name                 = string
-      service_discovery_namespace_id = string
-      security_groups                = list(string)
-      network_subnets                = list(string)
+      cluster_name    = string
+      log_group_name  = string
+      vpc_id          = string
+      security_groups = list(string)
+      network_subnets = list(string)
     })
 
     # lb = object({

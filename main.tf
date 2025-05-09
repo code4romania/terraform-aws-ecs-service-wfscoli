@@ -22,7 +22,7 @@ module "ecs_app" {
   container_memory_hard_limit = 512
 
   log_group_name                 = var.common.ecs_cluster.log_group_name
-  service_discovery_namespace_id = var.common.ecs_cluster.service_discovery_namespace_id
+  service_discovery_namespace_id = var.common.service_discovery.namespace_id
 
   container_port          = 80
   network_mode            = "awsvpc"
