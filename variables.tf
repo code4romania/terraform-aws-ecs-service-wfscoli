@@ -3,8 +3,8 @@ variable "name" {
   type        = string
 
   validation {
-    condition     = can(regex("^[a-z][a-z0-9-]{1,13}[a-z0-9]$", var.name))
-    error_message = "Name must be between 3 and 15 characters long and only contain lowercase letters, numbers, and hyphens. It must start with a letter and end with a letter or number."
+    condition     = can(regex("^[a-z][a-z0-9-]{1,30}[a-z0-9]$", var.name))
+    error_message = "Name must be between 3 and 32 characters long and only contain lowercase letters, numbers, and hyphens. It must start with a letter and end with a letter or number."
   }
 }
 
@@ -18,12 +18,12 @@ variable "hostname" {
 variable "common" {
   description = "Common variables"
   type = object({
+    image_tag                     = string
     namespace                     = string
     env                           = string
     rds_secrets_arn               = string
     create_database_function_name = string
     subdomain                     = string
-    image_tag                     = string
 
     media = object({
       s3_bucket_name = string
