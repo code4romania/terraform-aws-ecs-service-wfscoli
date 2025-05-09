@@ -1,10 +1,10 @@
 resource "aws_apigatewayv2_api" "main" {
-  name          = "${var.name}-${var.common.subdomain}"
+  name          = var.name
   protocol_type = "HTTP"
 }
 
 resource "aws_apigatewayv2_vpc_link" "main" {
-  name               = "${var.name}-${var.common.subdomain}-vpc-link"
+  name               = "${var.name}-vpc-link"
   security_group_ids = [aws_security_group.gateway_vpclink.id]
   subnet_ids         = var.common.ecs_cluster.network_subnets
 }
@@ -17,7 +17,7 @@ resource "aws_apigatewayv2_integration" "main" {
   connection_id          = aws_apigatewayv2_vpc_link.main.id
   integration_uri        = var.common.service_discovery.arn
   payload_format_version = "1.0"
-  description            = "${var.name}-${var.common.subdomain} CloudMap Integration"
+  description            = "${var.name} CloudMap Integration"
 }
 
 resource "aws_apigatewayv2_route" "main" {
@@ -33,7 +33,7 @@ resource "aws_apigatewayv2_stage" "main" {
 }
 
 resource "aws_security_group" "gateway_vpclink" {
-  name        = "${var.name}-${var.common.subdomain}-gateway-vpc-link"
+  name        = "${var.name}-gateway-vpc-link"
   description = "Security group for API Gateway VPC Link"
   vpc_id      = var.common.ecs_cluster.vpc_id
 
