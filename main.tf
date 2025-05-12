@@ -1,6 +1,6 @@
 module "ecs_app" {
   source  = "code4romania/ecs-service/aws"
-  version = "0.1.7"
+  version = "0.1.8"
 
   namespace    = var.name
   cluster_name = var.common.ecs_cluster.cluster_name
