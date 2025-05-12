@@ -10,15 +10,6 @@ module "ecs_app" {
   image_repo = "code4romania/website-factory"
   image_tag  = var.common.image_tag
 
-  # use_load_balancer       = true
-  # lb_dns_name             = var.common.lb.dns_name
-  # lb_zone_id              = var.common.lb.zone_id
-  # lb_vpc_id               = aws_vpc.main.id
-  # lb_listener_arn         = var.common.lb.listener_arn
-  # lb_hosts                = local.hosts
-  # lb_health_check_enabled = true
-  # lb_path                 = "/up"
-
   container_memory_hard_limit = 512
 
   log_group_name                 = var.common.ecs_cluster.log_group_name
