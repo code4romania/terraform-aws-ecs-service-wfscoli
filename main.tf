@@ -1,9 +1,13 @@
 module "ecs_app" {
   source  = "code4romania/ecs-service/aws"
-  version = "0.1.8"
+  version = "0.1.9"
 
-  namespace    = var.name
-  cluster_name = var.common.ecs_cluster.cluster_name
+  namespace = var.name
+  ecs_cluster = {
+    name = var.common.ecs_cluster.name
+    arn  = var.common.ecs_cluster.arn
+  }
+
   min_capacity = 1
   max_capacity = 1
 

@@ -36,7 +36,8 @@ variable "common" {
     })
 
     ecs_cluster = object({
-      cluster_name    = string
+      name            = string
+      arn             = string
       log_group_name  = string
       vpc_id          = string
       security_groups = list(string)
