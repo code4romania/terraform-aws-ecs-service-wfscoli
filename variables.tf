@@ -44,6 +44,12 @@ variable "common" {
       network_subnets = list(string)
     })
 
+    lb = object({
+      dns_name     = string
+      zone_id      = string
+      listener_arn = string
+    })
+
     apigateway_vpc_link_id = string
   })
 }
