@@ -130,10 +130,19 @@ module "ecs_app" {
       name      = "DB_PASSWORD"
       valueFrom = "${var.common.rds_secrets_arn}:password::"
     },
+    {
+      name      = "ADMIN_EMAIL"
+      valueFrom = "${aws_secretsmanager_secret.admin_credentials.arn}:email::"
+    },
+    {
+      name      = "ADMIN_PASSWORD"
+      valueFrom = "${aws_secretsmanager_secret.admin_credentials.arn}:password::"
+    },
   ]
 
   allowed_secrets = [
     aws_secretsmanager_secret.app_key.arn,
+    aws_secretsmanager_secret.admin_credentials.arn,
     var.common.rds_secrets_arn,
   ]
 }

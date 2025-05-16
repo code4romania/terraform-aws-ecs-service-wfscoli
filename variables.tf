@@ -14,6 +14,12 @@ variable "hostname" {
   default     = null
 }
 
+variable "admin_email" {
+  description = "Email address of initial admin account"
+  type        = string
+  default     = "admin@wfscoli.ro"
+}
+
 variable "common" {
   description = "Common variables"
   type = object({
