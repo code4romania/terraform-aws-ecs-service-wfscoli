@@ -88,6 +88,10 @@ module "ecs_app" {
       value = var.common.media.s3_bucket_name
     },
     {
+      name  = "AWS_BUCKET_ROOT"
+      value = var.name
+    },
+    {
       name  = "AWS_URL"
       value = "https://${var.common.media.cloudfront_url}"
     },
